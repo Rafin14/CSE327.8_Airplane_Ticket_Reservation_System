@@ -21,12 +21,13 @@ body {
 }
 
 .seat {
-  padding: 5px;
+  padding: 7px;
   background: #a4bcff;
   border-radius: 50%;
   height: 30px;
   width: 30px;
-  font-size: medium;
+  font-size: small;
+  text-align: center;
 }
 #layout .seat {
   cursor: pointer;
@@ -36,10 +37,11 @@ body {
   background: #7e7d7d !important;
 }
 .selected {
-  background: #ffe319 !important;
+  background: #00ff95 !important;
 }
 
 /* (C) LEGEND */
+
 #legend {
   display: grid;
   grid-template-columns: 50px 200px;
@@ -47,19 +49,33 @@ body {
   margin-left: 15px;
 }
 #legend div {
-  padding: 10px;
-  margin-left: 2px;
-  margin-bottom: 2px;
+  display: flex;
+  align-items: center; 
+  margin-left: 5px; 
+  margin-bottom: 5px;
+  font-size: larger;
+}
+
+.txt {
+  margin: 0;
 }
 
 /* (D) "CHECKOUT" */
 #go {
   border: 0;
   padding: 20px;
-  font-weight: 700;
+  font-weight: bold;
   color: #fff;
-  background: #9f3737;
+  background: #7197ff;
   cursor: pointer;
+  border-radius: 15px;
+  float: right;
+  margin-right: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 144px;
+  text-align: center;
+  line-height: 1px;
 }
 
 .formbg {
@@ -68,6 +84,7 @@ body {
   background: rgb(241, 241, 241);
   border-radius: 4px;
   float: right;
+  padding-bottom: 1080px;
   box-shadow: rgba(60, 66, 87, 0.12) 0px 7px 14px 0px, rgba(0, 0, 0, 0.12) 0px 3px 6px 0px;
 }
 
@@ -91,4 +108,39 @@ body {
   color: #ffffff;
   font-size: small;
   text-align: center;
+}
+
+.seatsave{
+  width: 70%;
+  background: #ffffff;
+  font-size: small;
+  font-weight: 100;
+  padding-left: 10px;
+  padding-top: 5px;
+  padding-bottom: 1px;
+  color: #ffffff;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  float: right;
+}
+
+#cancel{
+
+  border: 0;
+  padding: 20px;
+  font-weight: bold;
+  color: #fff;
+  background: #7197ff;
+  cursor: pointer;
+  border-radius: 15px;
+  float: left;
+  margin-left: 20px;
+  margin-top: 10px;
+  width: 144px;
+  text-align: center;
+  line-height: 1px;
+  position: fixed;
+  bottom: 0;
+  margin-bottom: 10px;
 }

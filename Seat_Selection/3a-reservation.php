@@ -41,17 +41,10 @@
       printf("<div class='seat%s'%s>%s</div>",
         $taken ? " taken" : "",
         $taken ? "" : " onclick='reserve.toggle(this)'",
-        $s["seat_id"]
+        $s["seat_id"],
       );
     }
     ?></div>
-        <!-- (E) SAVE SELECTION -->
-        <form id="ninja" method="post" action="4-save.php">
-            <input type="hidden" name="sessid" value="<?=$sessid?>">
-            <input type="hidden" name="userid" value="<?=$userid?>">
-        </form>
-        <button id="go" onclick="reserve.save()">Reserve Seats</button>
-
     </div>
 
     <div class=legend2>
@@ -63,9 +56,25 @@
             <div class="seat taken"></div>
             <div class="txt">Taken</div>
             <div class="seat selected"></div>
-            <div class="txt">Your Selected Seats</div>
+            <div class="txt">Selected Seat</div>
         </div>
     </div>
-</body>
 
-</html>
+    <!-- (E) SAVE SELECTION -->
+
+    <div class=seatsave>
+
+        <form id="ninja" method="post" action="4-save.php">
+            <input type="hidden" name="sessid" value="<?=$sessid?>">
+            <input type="hidden" name="userid" value="<?=$userid?>">
+        </form>
+        <button id="go" onclick="reserve.save()">Save Seat</button>
+
+    </div>
+
+    <button id="cancel" onclick="window.location.href = 'http://localhost/phpmyadmin/';">Cancel</button>
+
+
+    <body>
+
+    <html>
