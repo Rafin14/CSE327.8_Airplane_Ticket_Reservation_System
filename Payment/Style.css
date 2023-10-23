@@ -1,0 +1,85 @@
+
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 10%;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+
+
+
+ 
+.centered-box {
+    background-color: #f0c4f5;
+    padding: 50px;
+    text-align: center;
+    border-radius: 10px;
+    width: 300px; /* Adjust the value to control the width of the box */
+    margin-bottom: 20px; /* Add a margin between the "Select any Option" box and the button boxes */
+}
+
+
+
+.centered-box2 {
+    background-color: #98c6fb;
+    padding: 10px;
+    text-align: center;
+    border-radius: 10px;
+    width: 30%; /* Adjust the value to control the width of the box */
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+}
+
+.button {
+    width: 150px;
+    height: 70px;
+    margin:  20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 10px;
+    color: white;
+    background-color: #007bff; /* Default background color */
+    transition: background-color 0.3s; /* Smooth transition for background color change */
+    cursor: pointer; /* Change cursor to pointer on hover */
+  
+
+}
+
+.button:hover {
+    background-color: #0056b3; /* Change background color on hover */
+}
+
+.button1 {
+    background-color: #1a16ee; /* Set the background color for the first button */
+}
+
+.button1:hover {
+    background-color: #b8d3e9;
+}
+
+.button2 {
+    background-color: #ff33a0; /* Set the background color for the second button */
+}
+
+.button2:hover {
+    background-color: #edbfda;
+}
+
+.button3 {
+    background-color: #ff8b33; /* Set the background color for the third button */
+}
+
+.button3:hover {
+    background-color: #e4b270;
+}
