@@ -26,25 +26,25 @@ class Reserve {
   }
 
   // (D) GET SEATS FOR GIVEN SESSION
-  function get ($sessid) {
+  function get ($tripid) {
     $this->query(
-      "SELECT sa.`seat_id`, r.`user_id` FROM `seats` sa
-       LEFT JOIN `sessions` se USING (`room_id`)
+      "SELECT sa.`seat_id`, r.`booking_id` FROM `seats` sa
+       LEFT JOIN `trips` se USING (`flight_id`)
        LEFT JOIN `reservations` r USING(`seat_id`)
-       WHERE se.`session_id`=?
-       ORDER BY sa.`seat_id`", [$sessid]
+       WHERE se.`trip_id`=?
+       ORDER BY sa.`seat_id`", [$tripid]
     );
     $sess = $this->stmt->fetchAll();
     return $sess;
   }
 
   // (E) SAVE RESERVATION
-  function save ($sessid, $userid, $seats) {
-    $sql = "INSERT INTO `reservations` (`session_id`, `seat_id`, `user_id`) VALUES ";
+  function save ($tripid, $bookingid, $seats) {
+    $sql = "INSERT INTO `reservations` (`trip_id`, `seat_id`, `booking_id`) VALUES ";
     $data = [];
     foreach ($seats as $seat) {
       $sql .= "(?,?,?),";
-      array_push($data, $sessid, $seat, $userid);
+      array_push($data, $tripid, $seat, $bookingid);
     }
     $sql = substr($sql, 0, -1);
     $this->query($sql, $data);
@@ -54,7 +54,7 @@ class Reserve {
 
 // (F) DATABASE SETTINGS - CHANGE TO YOUR OWN!
 define("DB_HOST", "localhost");
-define("DB_NAME", "test_db");
+define("DB_NAME", "seat_selection");
 define("DB_CHARSET", "utf8mb4");
 define("DB_USER", "root");
 define("DB_PASSWORD", "");

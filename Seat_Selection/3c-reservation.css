@@ -13,7 +13,7 @@ body {
 /* (B) SEATS LAYOUT */
 #layout {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   grid-gap: 60px;
   margin-bottom: 30px;
   margin-top: 30px;
@@ -21,13 +21,14 @@ body {
 }
 
 .seat {
-  padding: 7px;
+  padding: 15px;
   background: #a4bcff;
   border-radius: 50%;
-  height: 30px;
-  width: 30px;
-  font-size: small;
+  height: 50px;
+  width: 50px;
+  font-size: medium;
   text-align: center;
+  font-weight: bold;
 }
 #layout .seat {
   cursor: pointer;
@@ -54,6 +55,8 @@ body {
   margin-left: 5px; 
   margin-bottom: 5px;
   font-size: larger;
+  padding-left: 10px;
+  font-weight: bolder;
 }
 
 .txt {

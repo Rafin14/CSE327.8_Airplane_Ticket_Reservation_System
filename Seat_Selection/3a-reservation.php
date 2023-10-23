@@ -24,12 +24,12 @@
 <body>
     <?php
     // (A) FIXED IDS FOR THIS DEMO
-    $sessid = 1;
-    $userid = 999;
+    $tripid = 1;
+    $bookingid = 999;
 
     // (B) GET SESSION SEATS
     require "2-reserve-lib.php";
-    $seats = $_RSV->get($sessid);
+    $seats = $_RSV->get($tripid);
     ?>
 
     <div class="formbg">
@@ -37,7 +37,7 @@
         <!-- (C) DRAW SEATS LAYOUT -->
         <div id="layout"><?php
     foreach ($seats as $s) {
-      $taken = is_numeric($s["user_id"]);
+      $taken = is_numeric($s["booking_id"]);
       printf("<div class='seat%s'%s>%s</div>",
         $taken ? " taken" : "",
         $taken ? "" : " onclick='reserve.toggle(this)'",
@@ -65,15 +65,14 @@
     <div class=seatsave>
 
         <form id="ninja" method="post" action="4-save.php">
-            <input type="hidden" name="sessid" value="<?=$sessid?>">
-            <input type="hidden" name="userid" value="<?=$userid?>">
+            <input type="hidden" name="tripid" value="<?=$tripid?>">
+            <input type="hidden" name="bookingid" value="<?=$bookingid?>">
         </form>
         <button id="go" onclick="reserve.save()">Save Seat</button>
 
     </div>
 
     <button id="cancel" onclick="window.location.href = 'http://localhost/phpmyadmin/';">Cancel</button>
-
 
     <body>
 
