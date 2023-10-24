@@ -16,7 +16,7 @@
 
 <div class="head2">
 
-    <h2> Location X to Location Y </h2>
+    <h2> Location X to Location Y TEST3</h2>
 
 </div>
 
@@ -24,12 +24,12 @@
 <body>
     <?php
     // (A) FIXED IDS FOR THIS DEMO
-    $tripid = 1;
+    $flightid = 'EK201';
     $bookingid = 999;
 
     // (B) GET SESSION SEATS
     require "2-reserve-lib.php";
-    $seats = $_RSV->get($tripid);
+    $seats = $_RSV->get($flightid);
     ?>
 
     <div class="formbg">
@@ -65,7 +65,7 @@
     <div class=seatsave>
 
         <form id="ninja" method="post" action="4-save.php">
-            <input type="hidden" name="tripid" value="<?=$tripid?>">
+            <input type="hidden" name="flightid" value="<?=$flightid?>">
             <input type="hidden" name="bookingid" value="<?=$bookingid?>">
         </form>
         <button id="go" onclick="reserve.save()">Save Seat</button>
