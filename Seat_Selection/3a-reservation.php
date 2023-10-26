@@ -16,7 +16,31 @@
 
 <div class="head2">
 
-    <h2> Location X to Location Y TEST3</h2>
+    <?php
+    
+    $db = mysqli_connect("localhost", "root", "", "airplane_ticket_reservation_system");
+    
+    $flightid = 'CX881';
+
+    $query = "SELECT f.origin FROM flight_info f WHERE f.flight_id = '$flightid'";
+    $origin = $db->query($query);
+
+    $row1 = $origin->fetch_assoc();
+
+    $query = "SELECT f.destination FROM flight_info f WHERE f.flight_id = '$flightid'";
+    $destination = $db->query($query);
+
+    $row2 = $destination->fetch_assoc();
+
+    $query = "SELECT f.airline_name FROM flight_info f WHERE f.flight_id = '$flightid'";
+    $airlinename = $db->query($query);
+
+    $row3 = $airlinename->fetch_assoc();
+
+
+    echo "<h2>". $row3["airline_name"] . "&nbsp &nbsp " . $flightid . ": &nbsp &nbsp " . $row1["origin"] . "&nbsp &nbsp to &nbsp &nbsp". $row2["destination"]  . "</h2>" ;
+
+    ?>
 
 </div>
 
@@ -24,7 +48,7 @@
 <body>
     <?php
     // (A) FIXED IDS FOR THIS DEMO
-    $flightid = 'EK201';
+    //$flightid = 'EK201';
     $bookingid = 999;
 
     // (B) GET SESSION SEATS

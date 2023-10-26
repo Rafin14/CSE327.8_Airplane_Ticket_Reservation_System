@@ -87,8 +87,8 @@ body {
   background: rgb(241, 241, 241);
   border-radius: 4px;
   float: right;
-  padding-bottom: 1080px;
   box-shadow: rgba(60, 66, 87, 0.12) 0px 7px 14px 0px, rgba(0, 0, 0, 0.12) 0px 3px 6px 0px;
+  padding-bottom: 144px;
 }
 
 .head{

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 24, 2023 at 11:07 PM
+-- Generation Time: Oct 26, 2023 at 11:41 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -24,12 +24,37 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `admin_info`
+--
+
+CREATE TABLE `admin_info` (
+  `admin_id` varchar(20) NOT NULL,
+  `pass` varchar(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `booking_info`
 --
 
 CREATE TABLE `booking_info` (
   `booking_id` int(10) NOT NULL,
   `flight_id` varchar(15) DEFAULT NULL,
+  `passenger_id` int(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `feedback`
+--
+
+CREATE TABLE `feedback` (
+  `rating` int(1) DEFAULT NULL,
+  `comments` text DEFAULT NULL,
+  `submission_date` datetime DEFAULT NULL,
+  `feedback_id` int(10) NOT NULL,
   `passenger_id` int(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -47,6 +72,14 @@ CREATE TABLE `flight_info` (
   `airline_name` varchar(16) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `flight_info`
+--
+
+INSERT INTO `flight_info` (`flight_id`, `origin`, `destination`, `departure_time`, `airline_name`) VALUES
+('CX881', 'VANCOUVER', 'HONG-KONG', '2023-11-07 02:30:00', 'CATHAY-PACIFIC'),
+('EK201', 'DUBAI', 'NEW-YORK', '2023-11-05 12:30:00', 'EMIRATES');
+
 -- --------------------------------------------------------
 
 --
@@ -61,6 +94,22 @@ CREATE TABLE `passenger_info` (
   `address` varchar(25) DEFAULT NULL,
   `email` varchar(20) DEFAULT NULL,
   `passenger_id` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `payment_info`
+--
+
+CREATE TABLE `payment_info` (
+  `payment_id` int(10) NOT NULL,
+  `ticket_price` int(6) DEFAULT NULL,
+  `vat` int(6) DEFAULT NULL,
+  `total` int(6) DEFAULT NULL,
+  `passenger_id` int(10) DEFAULT NULL,
+  `seat_id` varchar(16) DEFAULT NULL,
+  `booking_id` int(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -180,11 +229,24 @@ INSERT INTO `seats` (`seat_id`, `flight_id`) VALUES
 --
 
 --
+-- Indexes for table `admin_info`
+--
+ALTER TABLE `admin_info`
+  ADD PRIMARY KEY (`admin_id`);
+
+--
 -- Indexes for table `booking_info`
 --
 ALTER TABLE `booking_info`
   ADD PRIMARY KEY (`booking_id`),
   ADD KEY `flight_id` (`flight_id`),
+  ADD KEY `passenger_id` (`passenger_id`);
+
+--
+-- Indexes for table `feedback`
+--
+ALTER TABLE `feedback`
+  ADD PRIMARY KEY (`feedback_id`),
   ADD KEY `passenger_id` (`passenger_id`);
 
 --
@@ -198,6 +260,15 @@ ALTER TABLE `flight_info`
 --
 ALTER TABLE `passenger_info`
   ADD PRIMARY KEY (`passenger_id`);
+
+--
+-- Indexes for table `payment_info`
+--
+ALTER TABLE `payment_info`
+  ADD PRIMARY KEY (`payment_id`),
+  ADD KEY `passenger_id` (`passenger_id`),
+  ADD KEY `seat_id` (`seat_id`),
+  ADD KEY `booking_id` (`booking_id`);
 
 --
 -- Indexes for table `reservations`
@@ -221,6 +292,20 @@ ALTER TABLE `seats`
 ALTER TABLE `booking_info`
   ADD CONSTRAINT `booking_info_ibfk_1` FOREIGN KEY (`flight_id`) REFERENCES `flight_info` (`flight_id`),
   ADD CONSTRAINT `booking_info_ibfk_2` FOREIGN KEY (`passenger_id`) REFERENCES `passenger_info` (`passenger_id`);
+
+--
+-- Constraints for table `feedback`
+--
+ALTER TABLE `feedback`
+  ADD CONSTRAINT `feedback_ibfk_1` FOREIGN KEY (`passenger_id`) REFERENCES `passenger_info` (`passenger_id`);
+
+--
+-- Constraints for table `payment_info`
+--
+ALTER TABLE `payment_info`
+  ADD CONSTRAINT `payment_info_ibfk_1` FOREIGN KEY (`passenger_id`) REFERENCES `passenger_info` (`passenger_id`),
+  ADD CONSTRAINT `payment_info_ibfk_2` FOREIGN KEY (`seat_id`) REFERENCES `seats` (`seat_id`),
+  ADD CONSTRAINT `payment_info_ibfk_3` FOREIGN KEY (`booking_id`) REFERENCES `booking_info` (`booking_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
