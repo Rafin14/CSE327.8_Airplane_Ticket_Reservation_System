@@ -23,22 +23,22 @@
     $flightid = 'CX881';
 
     $query = "SELECT f.origin FROM flight_info f WHERE f.flight_id = '$flightid'";
-    $origin = $db->query($query);
+    $origin_query = $db->query($query);
 
-    $row1 = $origin->fetch_assoc();
+    $origin = $origin_query->fetch_assoc();
 
     $query = "SELECT f.destination FROM flight_info f WHERE f.flight_id = '$flightid'";
-    $destination = $db->query($query);
+    $destination_query = $db->query($query);
 
-    $row2 = $destination->fetch_assoc();
+    $destination = $destination_query->fetch_assoc();
 
     $query = "SELECT f.airline_name FROM flight_info f WHERE f.flight_id = '$flightid'";
-    $airlinename = $db->query($query);
+    $airlinename_query = $db->query($query);
 
-    $row3 = $airlinename->fetch_assoc();
+    $airlinename = $airlinename_query->fetch_assoc();
 
 
-    echo "<h2>". $row3["airline_name"] . "&nbsp &nbsp " . $flightid . ": &nbsp &nbsp " . $row1["origin"] . "&nbsp &nbsp to &nbsp &nbsp". $row2["destination"]  . "</h2>" ;
+    echo "<h2>". $airlinename["airline_name"] . "&nbsp &nbsp " . $flightid . ": &nbsp &nbsp " . $origin["origin"] . "&nbsp &nbsp to &nbsp &nbsp". $destination["destination"]  . "</h2>" ;
 
     ?>
 
