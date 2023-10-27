@@ -6,6 +6,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="admin_style.css">
 </head>
+
+<?php 
+
+session_start();
+
+$db = mysqli_connect("localhost", "root", "", "airplane_ticket_reservation_system");
+
+$id=$_SESSION["id"] ;
+$pass=$_SESSION["pass"];
+
+if(empty($id)){
+
+    echo"error";
+    echo '<script>alert("NOT AUTHORIZED")</script>';
+
+    header("Refresh: 0; URL=http://localhost/CSE327.8_Airplane_Ticket_Reservation_System/Admin_Panel/admin_login.html");
+
+    exit;
+
+}
+else{
+
+$sql = "SELECT pass FROM admin_info WHERE admin_ID = '$id'";
+$password_query = $db->query($sql);
+$password = $password_query->fetch_assoc();
+
+if($password["pass"]==$pass){
+
+    //DO NOTHING
+}
+else{
+    
+    echo"NOT AUTHORIZED";
+    echo '<script>alert("NOT AUTHORIZED")</script>';
+
+    header("Refresh: 0; URL=http://localhost/CSE327.8_Airplane_Ticket_Reservation_System/Admin_Panel/admin_login.html");
+
+    exit;
+
+}
+}
+
+?>
+
 <body>
 
 
@@ -19,7 +63,7 @@
     </div>
 
     <div class="head_panel3">
-        <h1>Flights:</h1>
+        <h1>ALL Flights:</h1>
     </div>
 
 
@@ -33,7 +77,7 @@
         <br></br>
         <button id="admin_buttons" onclick="window.location.href = 'http://localhost/';">Manage Bookings</button>
         <br></br>
-        <button id="logout" onclick="window.location.href = 'http://localhost/';">Logout</button>
+        <button id="logout" onclick="window.location.href = 'http://localhost/CSE327.8_Airplane_Ticket_Reservation_System/Admin_Panel/admin_logout.php';">Logout</button>
 
     </div>
 
