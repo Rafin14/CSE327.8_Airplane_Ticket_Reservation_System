@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cancel a Ticket</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Cancel Flight Ticket</h1>
+    </header>
+
+    <section id="cancellation">
+        <h2>Cancel Your Ticket</h2>
+        <form action="cancel_ticket_action.php" method="post">
+            <label for="pnr">PNR Number:</label>
+            <input type="text" id="pnr" name="pnr" placeholder="Enter PNR Number" required>
+            <label for="departure">Departure:</label>
+            <input type="text" id="departure" name="departure" placeholder="Departure City" required>
+            <label for="arrival">Arrival:</label>
+            <input type="text" id="arrival" name="arrival" placeholder="Arrival City" required>
+            <label for="class">Class:</label>
+            <input type="text" id="class" name="class" placeholder="Class" required>
+            <label for="total-fare">Total Fare:</label>
+            <input type="text" id="total-fare" name="total-fare" placeholder="Total Fare" required>
+            <label for="passenger-details">Passenger Details:</label>
+            <input type="text" id="passenger-details" name="passenger-details" placeholder="Passenger Details" required>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="Your Name" required>
+            <label for="booking-status">Booking Status:</label>
+            <input type="text" id="booking-status" name="booking-status" placeholder="Booking Status" required>
+            <label for="current-status">Current Status:</label>
+            <input type="text" id="current-status" name="current-status" placeholder="Current Status" required>
+            <input type="submit" value="Cancel Ticket">
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 Airline Booking</p>
+    </footer>
+</body>
+</html>
