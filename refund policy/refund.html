@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Refund Policy</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Refund Policy</h1>
+    </header>
+
+    <section id="refund-policy">
+        <h2>Cancel Ticket and Refund Policy</h2>
+        <p>If you cancel your ticket:</p>
+        <ul>
+            <li>If canceled 24 hours or more before departure, you are eligible for a <span class="green">100% refund</span>.</li>
+            <li>If canceled within 24 hours of departure, you are eligible for a <span class="orange">50% refund</span>.</li>
+        </ul>
+        <p class="red">Cancellation fees may apply.</p>
+        <p>For refunds, please provide the following information:</p>
+        <form action="refund_request.php" method="post">
+            <label for="pnr">PNR Number:</label>
+            <input type="text" id="pnr" name="pnr" placeholder="Enter PNR Number" required>
+            <label for="departure-date">Departure Date:</label>
+            <input type="date" id="departure-date" name="departure-date" required>
+            <label for="contact-email">Contact Email:</label>
+            <input type="email" id="contact-email" name="contact-email" placeholder="Your Email" required>
+            <label for="contact-phone">Contact Phone:</label>
+            <input type="tel" id="contact-phone" name="contact-phone" placeholder="Your Phone Number" required>
+            <label for="account-info">Account Information (Credit Card or Mobile Banking):</label>
+            <textarea id="account-info" name="account-info" rows="4" placeholder="Provide Account Information" required></textarea>
+            <input type="submit" value="Request Refund">
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 Airline Booking</p>
+    </footer>
+</body>
+</html>
