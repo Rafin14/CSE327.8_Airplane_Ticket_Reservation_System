@@ -91,7 +91,12 @@
     margin: 0 60px; /* Add some horizontal spacing between paragraphs */
   }
   
- 
+
+  .box:hover {
+    background-color: #0078f8; /* Change background color on hover */
+}
+
+
   
  
   
