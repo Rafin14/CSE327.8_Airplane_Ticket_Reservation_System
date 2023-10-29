@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 28, 2023 at 08:45 PM
+-- Generation Time: Oct 29, 2023 at 01:41 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -85,7 +85,9 @@ CREATE TABLE `flight_info` (
 --
 
 INSERT INTO `flight_info` (`flight_id`, `origin`, `destination`, `departure_time`, `airline_name`, `price`) VALUES
+('CX844', 'VANCOUVER', 'HONG-KONG', '2023-11-07 08:30:00', 'CATHAY-PACIFIC', 150000),
 ('CX881', 'VANCOUVER', 'HONG-KONG', '2023-11-07 02:30:00', 'CATHAY-PACIFIC', 100000),
+('CX894', 'VANCOUVER', 'HONG-KONG', '2023-11-07 12:30:00', 'CATHAY-PACIFIC', 180000),
 ('EK201', 'DUBAI', 'NEW-YORK', '2023-11-05 12:30:00', 'EMIRATES', 150000);
 
 -- --------------------------------------------------------
