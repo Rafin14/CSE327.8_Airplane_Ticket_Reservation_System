@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      .payment-details {
+        text-align: left; /* Align the content to the right */
+        margin-top: 20px; /* Adjust the value to control the gap size between heading and the starting line */
+      }
+      
+      .payment-details h2 {
+        font-family: 'Roboto', sans-serif;
+        margin-left: 650px; /* Adjust the value to move the heading backward */
+      }
+     
+      .payment-box {
+        background-color: #a5c0f1; /* Background color for the box */
+        padding: 5px; /* Adjust the padding to control the size of the box */
+        margin-top: 10px; /* Adjust the value to control the gap between the heading and the box */
+        height: 40px; /* Adjust the height to make the box shorter */
+        width: 150px;
+        margin-left: 650px;
+        display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      }
+    
+      .centered-text {
+        text-align: center;
+        font-size: 18px; /* Adjust the font size as needed */
+      }
+    
+      .user-input {
+        margin-top: 20px; /* Adjust the value to control the gap between the previous box and the user input box */
+      }
+      
+      .user-input input {
+        width: 20%; /* Makes the input element full width */
+        padding: 10px; /* Adjust the padding as needed */
+        border: 2px solid #ccc; /* Add a border around the input */
+        margin-left:650px;
+      }
+    
+      .date-box {
+        background-color: #b3cef9; /* Background color for the box */
+        padding: 5px; /* Adjust the padding to control the size of the box */
+        margin-top: 10px; /* Adjust the value to control the gap between the heading and the box */
+        width: 140px;
+        height: 40px; /* Adjust the height to make the box shorter */
+        border-radius: 10px;
+        margin-left: 650px;
+        display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      }
+    
+      .centered-text {
+        text-align: center;
+        
+      }
+    
+      .user-input {
+        margin-top: 20px; /* Adjust the value to control the gap between the previous box and the user input box */
+      }
+      
+      .user-input input {
+        margin-left: 650px;
+        width: 20%; /* Makes the input element full width */
+        padding: 10px; /* Adjust the padding as needed */
+        border: 2px solid #ccc; /* Add a border around the input */
+      }
+    
+      .cvv-box {
+        background-color: #b3cef9; /* Background color for the box */
+        padding: 5px; /* Adjust the padding to control the size of the box */
+        margin-top: 10px; /* Adjust the value to control the gap between the heading and the box */
+        width: 140px;
+        height: 40px; /* Adjust the height to make the box shorter */
+        border-radius: 10px;
+        margin-left: 650px;
+        display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      }
+    
+      .centered-text {
+        text-align: center;
+        
+      }
+    
+      .user-input {
+        margin-top: 20px; /* Adjust the value to control the gap between the previous box and the user input box */
+      }
+      
+      .user-input input {
+        margin-left: 650px;
+        width: 20%; /* Makes the input element full width */
+        padding: 10px; /* Adjust the padding as needed */
+        border: 1px solid #ccc; /* Add a border around the input */
+      }
+    
+      button{
+        padding: 5px; /* Adjust the padding to control the size of the box */
+        margin-top: 30px; /* Adjust the value to control the gap between the heading and the box */
+        width: 140px;
+        height: 40px; /* Adjust the height to make the box shorter */
+        border-radius: 10px;
+        margin-left: 730px;
+        display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      }
+    
+    button-container {
+        /* Center the button horizontally and position it at the bottom */
+        text-align: center;
+        
+        
+     
+    }
+    
+    .click-button {
+        /* Style your button as you like */
+        padding:  10px;
+        background-color: #0074d9;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+    }
+    
+    .click-button:hover {
+        background-color: #aec8ee;
+    }
+    </style>
+</head>
+
+<body>
+  <div class="payment-details">
+      <h2>Payment Details for Card</h2>
+  </div>
+
+  <div class="payment-box">
+      <p class="centered-text"> Card Number :</p>
+  </div>
+  <div class="user-input">
+      <input type="text" placeholder="Enter your card number here" id="cardNumberInput">
+  </div>
+
+  <div class="date-box">
+      <p class="centered-text"> Expiry Date: </p>
+  </div>
+  <div class="user-input">
+      <input type="text" placeholder="Enter (dd.mm.yyyy) here">
+  </div>
+
+  <div class="cvv-box">
+      <p class="centered-text"> CVV :</p>
+  </div>
+  <div class="user-input">
+      <input type="text" placeholder="Enter your here" id="cvvInput">
+  </div>
+
+  <div class="button-container">
+      <button class="click-button" id="myButton">Click Me</button>
+  </div>
+
+  <p id="errorText" style="display: none; color: red;">Card number should be 16 digits</p>
+  <p id="errorTextCVV" style="display: none; color: red;">CVV should be 4 digits</p>
+  <p id="errorTextBoth" style="display: none; color: red;">Card number and CVV are invalid</p>
+  <p id="successText" style="display: none;">Payment is done</p>
+
+  <script>
+    document.getElementById('myButton').addEventListener('click', function() {
+        var cardNumberInput = document.getElementById('cardNumberInput').value;
+        var cvvInput = document.getElementById('cvvInput').value;
+        var errorText = document.getElementById('errorText');
+        var errorTextCVV = document.getElementById('errorTextCVV');
+        var errorTextBoth = document.getElementById('errorTextBoth');
+        var successText = document.getElementById('successText');
+
+        if (cardNumberInput.length !== 16 && cvvInput.length !== 4) {
+            // Show error message for both invalid card number and CVV
+            errorTextBoth.style.display = 'block';
+            errorText.style.display = 'none';
+            errorTextCVV.style.display = 'none';
+            successText.style.display = 'none';
+        } else if (cardNumberInput.length !== 16) {
+            // Show error message for invalid card number length
+            errorText.style.display = 'block';
+            errorTextBoth.style.display = 'none';
+            errorTextCVV.style.display = 'none';
+            successText.style.display = 'none';
+        } else if (cvvInput.length !== 4) {
+            // Show error message for invalid CVV length
+            errorTextCVV.style.display = 'block';
+            errorTextBoth.style.display = 'none';
+            errorText.style.display = 'none';
+            successText.style.display = 'none';
+        } else {
+            errorText.style.display = 'none';
+            errorTextCVV.style.display = 'none';
+            errorTextBoth.style.display = 'none';
+            successText.style.display = 'block';
+
+            // Get the message you want to show on the next page
+            var message = "Your payment is done.";
+
+            // Redirect to another page with the message in the URL
+            window.location.href = "secondPage.html?message=" + encodeURIComponent(message);
+        }
+    });
+</script>
+</body>
+</html>
