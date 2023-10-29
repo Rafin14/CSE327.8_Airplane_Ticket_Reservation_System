@@ -1,7 +1,17 @@
+/**
+ * This function sets up an event listener to handle form submission for flight search.
+ *
+ * @function
+ */
 document.addEventListener("DOMContentLoaded", function () {
   const searchForm = document.getElementById("search-form");
   const flightList = document.getElementById("flight-list");
 
+  /**
+   * Event handler for form submission.
+   *
+   * @param {Event} event - The submit event object.
+   */
   searchForm.addEventListener("submit", function (event) {
     event.preventDefault();
 
