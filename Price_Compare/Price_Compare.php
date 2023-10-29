@@ -14,6 +14,8 @@
       <div class="box box2">
       <h2>Cheapest</h2>
         <?php
+
+        
         $db= mysqli_connect("localhost", "root", "","airplane_ticket_reservation_system");
         
         $query= "SELECT * FROM flight_info WHERE price = (SELECT MIN(price) FROM flight_info);";
