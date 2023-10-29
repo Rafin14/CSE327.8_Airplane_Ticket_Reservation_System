@@ -1,0 +1,149 @@
+/* (A) ENTIRE PAGE */
+* {
+  font-family: Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  margin-top: 0;
+}
+
+/* (B) SEATS LAYOUT */
+#layout {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-gap: 60px;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  margin-left: 30px;
+}
+
+.seat {
+  padding: 15px;
+  background: #a4bcff;
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  font-size: medium;
+  text-align: center;
+  font-weight: bold;
+}
+#layout .seat {
+  cursor: pointer;
+}
+.taken {
+  color: #000000;
+  background: #7e7d7d !important;
+}
+.selected {
+  background: #00ff95 !important;
+}
+
+/* (C) LEGEND */
+
+#legend {
+  display: grid;
+  grid-template-columns: 50px 200px;
+  margin-bottom: 2px;
+  margin-left: 15px;
+}
+#legend div {
+  display: flex;
+  align-items: center; 
+  margin-left: 5px; 
+  margin-bottom: 5px;
+  font-size: larger;
+  padding-left: 10px;
+  font-weight: bolder;
+}
+
+.txt {
+  margin: 0;
+}
+
+/* (D) "CHECKOUT" */
+#go {
+  border: 0;
+  padding: 20px;
+  font-weight: bold;
+  color: #fff;
+  background: #7197ff;
+  cursor: pointer;
+  border-radius: 15px;
+  float: right;
+  margin-right: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 144px;
+  text-align: center;
+  line-height: 1px;
+}
+
+.formbg {
+  margin: 0px auto;
+  width: 70%;
+  background: rgb(241, 241, 241);
+  border-radius: 4px;
+  float: right;
+  box-shadow: rgba(60, 66, 87, 0.12) 0px 7px 14px 0px, rgba(0, 0, 0, 0.12) 0px 3px 6px 0px;
+  padding-bottom: 144px;
+}
+
+.head{
+  width: 100%;
+  background: #7197ff;
+  font-size: small;
+  font-weight: 100;
+  padding-left: 10px;
+  padding-top: 5px;
+  padding-bottom: 1px;
+  color: #ffffff;
+  
+}
+.head2{
+  width: 100%;
+  background: #333333;
+  padding-left: 10px;
+  padding-top: 5px;
+  padding-bottom: 1px;
+  color: #ffffff;
+  font-size: small;
+  text-align: center;
+}
+
+.seatsave{
+  width: 70%;
+  background: #ffffff;
+  font-size: small;
+  font-weight: 100;
+  padding-left: 10px;
+  padding-top: 5px;
+  padding-bottom: 1px;
+  color: #ffffff;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  float: right;
+}
+
+#cancel{
+
+  border: 0;
+  padding: 20px;
+  font-weight: bold;
+  color: #fff;
+  background: #7197ff;
+  cursor: pointer;
+  border-radius: 15px;
+  float: left;
+  margin-left: 20px;
+  margin-top: 10px;
+  width: 144px;
+  text-align: center;
+  line-height: 1px;
+  position: fixed;
+  bottom: 0;
+  margin-bottom: 10px;
+}
