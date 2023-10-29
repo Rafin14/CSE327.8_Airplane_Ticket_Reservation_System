@@ -47,7 +47,7 @@
 
 <body>
     <?php
-    // (A) FIXED IDS FOR THIS DEMO
+    
     //$flightid = 'EK201';
     $bookingid = 999;
 
