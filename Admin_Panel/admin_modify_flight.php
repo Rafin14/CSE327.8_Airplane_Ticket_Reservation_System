@@ -70,8 +70,6 @@ else{
         <center>
         <button id="admin_buttons" onclick="window.location.href = 'http://localhost/admin_page/admin_manage_flights.php';">Manage Flights</button>
         <br></br>
-        <button id="admin_buttons" onclick="window.location.href = 'http://localhost/';">Manage Bookings</button>
-        <br></br>
         <button id="admin_buttons" onclick="window.location.href = 'http://localhost/phpmyadmin/index.php?route=/database/structure&db=airplane_ticket_reservation_system';">Database Access</button>
         <br></br>
         <button id="logout" onclick="window.location.href = 'http://localhost/admin_page/admin_logout.php';">Logout</button>
@@ -160,7 +158,7 @@ else{
 
 <div class = "flight_info">
 
-<form action = "admin_add&modify.php" method ="POST">
+<form action = "admin_add_delete.php" method ="POST">
 
     <div>
         <label>Origin: </label> 
@@ -201,7 +199,7 @@ else{
 
 </form>
 
-<form action = "admin_add&modify.php" method ="POST">
+<form action = "admin_add_delete.php" method ="POST">
 
 <input type="hidden" name="flightid" value="<?php echo $flightId; ?>">
 <input type="hidden" name="delete_flight" value="1">
@@ -212,10 +210,6 @@ else{
 
 
 </form>
-
-<!--
-    <button id="delete_flight" onclick="window.location.href = 'http://localhost/admin_page/admin_add&modify.php';">DELETE FLIGHT</button>
--->
 
 </body>
 </html>

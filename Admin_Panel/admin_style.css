@@ -56,6 +56,8 @@
     float: left;
     box-shadow: rgba(60, 66, 87, 0.12) 0px 7px 14px 0px, rgba(0, 0, 0, 0.12) 0px 3px 6px 0px;
     padding-top: 200px;
+    position: fixed;
+    height: 100%;
     
 }
 
@@ -95,6 +97,7 @@ table{
     width: 80%;
     margin: 20 auto;
     border-radius: 15px;
+    float: right;
 }
 
 th {
@@ -285,6 +288,11 @@ th {
     font-weight: bold;
 }
 
+.flight_info{
+padding-left: 20%;
+  float: right;
+}
+
 .flight_info form div {
   display: inline-block;
   margin-right: 20px;
@@ -320,20 +328,6 @@ th {
   font-size: large;
 }
 
-#delete_flight{
-  background-color: #ff0000;
-  color: #fff;
-  padding: 10px 20px;
-  border-color: #000000;
-  border-radius: 10px; 
-  cursor: pointer;
-  width: 200px; 
-  font-size: large;
-  position: fixed;
-  bottom: 0;
-  margin-left: 20px;
-  margin-bottom: 20px;
-}
 
 #delete_flight_button {
   margin-bottom: 20px;

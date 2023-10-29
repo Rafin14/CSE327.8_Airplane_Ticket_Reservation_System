@@ -76,8 +76,6 @@ else{
         <center>
         <button id="admin_buttons" onclick="window.location.href = 'http://localhost/admin_page/admin_manage_flights.php';">Manage Flights</button>
         <br></br>
-        <button id="admin_buttons" onclick="window.location.href = 'http://localhost/';">Manage Bookings</button>
-        <br></br>
         <button id="admin_buttons" onclick="window.location.href = 'http://localhost/phpmyadmin/index.php?route=/database/structure&db=airplane_ticket_reservation_system';">Database Access</button>
         <br></br>
         <button id="logout" onclick="window.location.href = 'http://localhost/admin_page/admin_logout.php';">Logout</button>
