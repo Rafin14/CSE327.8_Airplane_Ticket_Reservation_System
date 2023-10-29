@@ -59,12 +59,13 @@ else{
     </div>
 
     <div class="head_panel2">
-        <h1>Flight Information</h1>
+        <h1>Manage Flight:</h1>
     </div>
 
     <div class="head_panel3">
-        <h1>ALL Flights:</h1>
+        <h1>Add Flight:</h1>
     </div>
+
 
 
     <div class="side_bar">
@@ -81,65 +82,54 @@ else{
 
     </div>
 
-    <?php
-    
-    $db = mysqli_connect("localhost", "root", "", "airplane_ticket_reservation_system");
 
-    if ($db->connect_error) {
-        die("Connection failed: " . $db->connect_error);
-    }
+<div class = "flight_info">
 
-    
-    $count = 1;       
-    $query = "SELECT * FROM flight_info;";
-    $flightdata_query = $db->query($query);
+<form action = "admin_flight_adding.php" method ="POST">
+
+    <div>
+        <label>Flight ID: </label> 
+        <input type = "text" name = "flightid" value = "">
+    </div>
+
+    <div>
+        <label>Origin: </label> 
+        <input type = "text" name = "origin" value = "">
+    </div>
+
+    <div>
+        <label>Destination: </label> 
+        <input type = "text" name = "destination" value = "">
+    </div>
+
+    <div>
+        <label>Date: </label> 
+        <input type = "Date" name = "date" value = "">
+    </div>
+
+    <div>
+        <label>Time: </label> 
+        <input type = "time" name = "time" value = "">
+    </div>
+
+    <div>
+        <label>Airline: </label> 
+        <input type = "text" name = "airline" value = "">
+    </div>
+
+    <div>
+        <label>Ticket Price: </label> 
+        <input type = "text" name = "price" value = "">
+    </div>
+
+    <div>
+        <input type = "submit" value = "Add Flight">
+    </div>
+
+</form>
 
 
-    if (!$flightdata_query) {
-        die("Query failed: " . $db->error);
-    }
-
-    echo"<div class = flight_table>";
-
-    echo "<table>";
-    
-    echo "<tr>";
-    echo "<th>No.</th>";
-    echo "<th>Flight ID</th>";
-    echo "<th>Origin</th>";
-    echo "<th>Destination</th>";
-    echo "<th>Departure Time</th>";
-    echo "<th>Airline</th>";
-    
-    echo "</tr>";
-
-    echo "</tr>";
-    
-    while ($flightdata = $flightdata_query->fetch_assoc()) {
-
-        echo "<tr>";
-
-        echo "<td>" . $count. "</td>";
-        echo "<td>" . $flightdata["flight_id"] . "</td>";
-        echo "<td>" . $flightdata["origin"] . "</td>";
-        echo "<td>" . $flightdata["destination"] . "</td>";
-        echo "<td>" . $flightdata["departure_time"] . "</td>";
-        echo "<td>" . $flightdata["airline_name"] . "</td>";
-        
-        echo "</tr>";
-
-        $count++;
-    
-    }
-    
-    echo "</table>";
-    
-    
-    echo"</div>";
-
-      
-    ?>
-
+</div>
 
 
 </body>

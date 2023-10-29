@@ -59,11 +59,14 @@ else{
     </div>
 
     <div class="head_panel2">
-        <h1>Flight Information</h1>
+        <h1>Manage Flights</h1>
     </div>
 
     <div class="head_panel3">
-        <h1>ALL Flights:</h1>
+        <h1>Modify Flights:</h1>
+
+        <right>
+        <button id="add_flight" onclick="window.location.href = 'http://localhost/admin_page/admin_add_flight.php';">Add Flight</button>
     </div>
 
 
@@ -110,6 +113,7 @@ else{
     echo "<th>Destination</th>";
     echo "<th>Departure Time</th>";
     echo "<th>Airline</th>";
+    echo "<th>Action</th>";
     
     echo "</tr>";
 
@@ -125,6 +129,7 @@ else{
         echo "<td>" . $flightdata["destination"] . "</td>";
         echo "<td>" . $flightdata["departure_time"] . "</td>";
         echo "<td>" . $flightdata["airline_name"] . "</td>";
+        echo "<td><button id='admin_buttons' onclick='location.href=\"admin_modify_flight.php?flight_id=" . $flightdata["flight_id"] . "\"'>Modify</button></td>";
         
         echo "</tr>";
 

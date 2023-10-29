@@ -59,12 +59,9 @@ else{
     </div>
 
     <div class="head_panel2">
-        <h1>Flight Information</h1>
+        <h1>Manage Flights</h1>
     </div>
 
-    <div class="head_panel3">
-        <h1>ALL Flights:</h1>
-    </div>
 
 
     <div class="side_bar">
@@ -88,10 +85,28 @@ else{
     if ($db->connect_error) {
         die("Connection failed: " . $db->connect_error);
     }
-
     
-    $count = 1;       
-    $query = "SELECT * FROM flight_info;";
+    if (isset($_GET['flight_id'])) {
+
+        $flightId = $_GET['flight_id'];
+    
+    } else {
+
+        echo"NOT AUTHORIZED";
+        echo '<script>alert("NOT AUTHORIZED")</script>';
+    
+        header("Refresh: 0; URL=http://localhost/admin_page/admin_login.html");
+    
+        exit;
+    
+    
+    }
+
+    echo"<div class=head_panel3>";
+    echo"<h1>Flight Info of  $flightId : </h1>";
+    echo"</div>";
+    
+    $query = "SELECT * FROM flight_info WHERE flight_id = '$flightId';";
     $flightdata_query = $db->query($query);
 
 
@@ -104,12 +119,12 @@ else{
     echo "<table>";
     
     echo "<tr>";
-    echo "<th>No.</th>";
     echo "<th>Flight ID</th>";
     echo "<th>Origin</th>";
     echo "<th>Destination</th>";
     echo "<th>Departure Time</th>";
     echo "<th>Airline</th>";
+    echo "<th>TIcket Price</th>";
     
     echo "</tr>";
 
@@ -118,17 +133,17 @@ else{
     while ($flightdata = $flightdata_query->fetch_assoc()) {
 
         echo "<tr>";
-
-        echo "<td>" . $count. "</td>";
+        
         echo "<td>" . $flightdata["flight_id"] . "</td>";
         echo "<td>" . $flightdata["origin"] . "</td>";
         echo "<td>" . $flightdata["destination"] . "</td>";
         echo "<td>" . $flightdata["departure_time"] . "</td>";
         echo "<td>" . $flightdata["airline_name"] . "</td>";
+        echo "<td>" . "BDT " . $flightdata["price"] . "</td>";
+
+
         
         echo "</tr>";
-
-        $count++;
     
     }
     
@@ -137,10 +152,70 @@ else{
     
     echo"</div>";
 
+    echo"<div class=head_panel3>";
+    echo"<h1>Enter Updated Info of  $flightId : </h1>";
+    echo"</div>";
       
     ?>
 
+<div class = "flight_info">
 
+<form action = "admin_add&modify.php" method ="POST">
+
+    <div>
+        <label>Origin: </label> 
+        <input type = "text" name = "origin" value = "">
+    </div>
+
+    <div>
+        <label>Destination: </label> 
+        <input type = "text" name = "destination" value = "">
+    </div>
+
+    <div>
+        <label>Date: </label> 
+        <input type = "Date" name = "date" value = "">
+    </div>
+
+    <div>
+        <label>Time: </label> 
+        <input type = "time" name = "time" value = "">
+    </div>
+
+    <div>
+        <label>Airline: </label> 
+        <input type = "text" name = "airline" value = "">
+    </div>
+
+    <div>
+        <label>Ticket Price: </label> 
+        <input type = "text" name = "price" value = "">
+    </div>
+
+    <input type="hidden" name="flightid" value="<?php echo $flightId; ?>">
+
+
+    <div>
+        <input type = "submit" value = "Update">
+    </div>
+
+</form>
+
+<form action = "admin_add&modify.php" method ="POST">
+
+<input type="hidden" name="flightid" value="<?php echo $flightId; ?>">
+<input type="hidden" name="delete_flight" value="1">
+
+<div>
+    <input type="submit" id="delete_flight_button" value="DELETE FLIGHT">
+</div>
+
+
+</form>
+
+<!--
+    <button id="delete_flight" onclick="window.location.href = 'http://localhost/admin_page/admin_add&modify.php';">DELETE FLIGHT</button>
+-->
 
 </body>
 </html>

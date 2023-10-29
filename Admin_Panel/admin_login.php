@@ -14,7 +14,7 @@ if(empty($id) || empty($pass)){
     echo"error";
     echo '<script>alert("Please Enter ID and Pass")</script>';
 
-    header("Refresh: 0.5; URL=http://localhost/CSE327.8_Airplane_Ticket_Reservation_System/Admin_Panel/admin_login.html");
+    header("Refresh: 0.5; URL=http://localhost/admin_page/admin_login.html");
 
 }
 else{
@@ -31,7 +31,7 @@ if($password["pass"]==$pass){
     $_SESSION["pass"] = $pass;
 
 
-    header("Location: http://localhost/CSE327.8_Airplane_Ticket_Reservation_System/Admin_Panel/admin_dashboard.php");
+    header("Location: http://localhost/admin_page/admin_dashboard.php");
     
 
 }
@@ -40,7 +40,7 @@ else{
     echo"error";
     echo '<script>alert("Username or Password Incorrect")</script>';
 
-    header("Refresh: 0.5; URL=http://localhost/CSE327.8_Airplane_Ticket_Reservation_System/Admin_Panel/admin_login.html");
+    header("Refresh: 0.5; URL=http://localhost/admin_page/admin_login.html");
 
 }
 }
