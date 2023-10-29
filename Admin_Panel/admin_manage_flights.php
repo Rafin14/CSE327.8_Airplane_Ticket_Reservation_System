@@ -7,54 +7,49 @@
     <link rel="stylesheet" href="admin_style.css">
 </head>
 
-<?php 
+<?php
+/**
+ * PHP script for managing flights in the airplane ticket reservation system.
+ *
+ * This script handles admin authorization, displays flight information, and allows modification of flights.
+ *
+ * @package FlightManagement
+ * @author [Your Name]
+ * @version 1.0
+ */
 
+// Start the session
 session_start();
 
+// Connect to the database
 $db = mysqli_connect("localhost", "root", "", "airplane_ticket_reservation_system");
 
-$id=$_SESSION["id"] ;
-$pass=$_SESSION["pass"];
+$id = $_SESSION["id"];
+$pass = $_SESSION["pass"];
 
-if(empty($id)){
-
-    echo"error";
+if (empty($id)) {
+    echo "error";
     echo '<script>alert("NOT AUTHORIZED")</script>';
-
-    header("Refresh: 0; URL=http://localhost/admin_page/admin_login.html");
-
+    header("Refresh: 0; URL=http://localhost/CSE327.8_Airplane_Ticket_Reservation_System/Admin_Panel/admin_login.html");
     exit;
+} else {
+    $sql = "SELECT pass FROM admin_info WHERE admin_ID = '$id'";
+    $password_query = $db->query($sql);
+    $password = $password_query->fetch_assoc();
 
+    if ($password["pass"] == $pass) {
+        // User is authorized, do nothing
+    } else {
+        echo "NOT AUTHORIZED";
+        echo '<script>alert("NOT AUTHORIZED")</script>';
+        header("Refresh: 0; URL=http://localhost/CSE327.8_Airplane_Ticket_Reservation_System/Admin_Panel/admin_login.html");
+        exit;
+    }
 }
-else{
-
-$sql = "SELECT pass FROM admin_info WHERE admin_ID = '$id'";
-$password_query = $db->query($sql);
-$password = $password_query->fetch_assoc();
-
-if($password["pass"]==$pass){
-
-    //DO NOTHING
-}
-else{
-    
-    echo"NOT AUTHORIZED";
-    echo '<script>alert("NOT AUTHORIZED")</script>';
-
-    header("Refresh: 0; URL=http://localhost/admin_page/admin_login.html");
-
-    exit;
-
-}
-}
-
 ?>
 
 <body>
-
-
     <div class="head_panel1">
-
         <h1>Admin Panel</h1>
     </div>
 
@@ -64,46 +59,40 @@ else{
 
     <div class="head_panel3">
         <h1>Modify Flights:</h1>
-
         <right>
-        <button id="add_flight" onclick="window.location.href = 'http://localhost/admin_page/admin_add_flight.php';">Add Flight</button>
+            <button id="add_flight" onclick="window.location.href = 'http://localhost/CSE327.8_Airplane_Ticket_Reservation_System/Admin_Panel/admin_add_flight.php';">Add Flight</button>
+        </right>
     </div>
 
-
     <div class="side_bar">
-
         <br></br>
         <center>
-        <button id="admin_buttons" onclick="window.location.href = 'http://localhost/admin_page/admin_manage_flights.php';">Manage Flights</button>
-        <br></br>
-        <button id="admin_buttons" onclick="window.location.href = 'http://localhost/phpmyadmin/index.php?route=/database/structure&db=airplane_ticket_reservation_system';">Database Access</button>
-        <br></br>
-        <button id="logout" onclick="window.location.href = 'http://localhost/admin_page/admin_logout.php';">Logout</button>
-
+            <button id="admin_buttons" onclick="window.location.href = 'http://localhost/CSE327.8_Airplane_Ticket_Reservation_System/Admin_Panel/admin_manage_flights.php';">Manage Flights</button>
+            <br></br>
+            <button id="admin_buttons" onclick="window.location.href = 'http://localhost/phpmyadmin/index.php?route=/database/structure&db=airplane_ticket_reservation_system';">Database Access</button>
+            <br></br>
+            <button id="logout" onclick="window.location.href = 'http://localhost/CSE327.8_Airplane_Ticket_Reservation_System/Admin_Panel/admin_logout.php';">Logout</button>
+        </center>
     </div>
 
     <?php
-    
+    // Retrieve flight information and display in a table
     $db = mysqli_connect("localhost", "root", "", "airplane_ticket_reservation_system");
 
     if ($db->connect_error) {
         die("Connection failed: " . $db->connect_error);
     }
 
-    
-    $count = 1;       
+    $count = 1;
     $query = "SELECT * FROM flight_info;";
     $flightdata_query = $db->query($query);
-
 
     if (!$flightdata_query) {
         die("Query failed: " . $db->error);
     }
 
-    echo"<div class = flight_table>";
-
+    echo "<div class = flight_table>";
     echo "<table>";
-    
     echo "<tr>";
     echo "<th>No.</th>";
     echo "<th>Flight ID</th>";
@@ -112,15 +101,12 @@ else{
     echo "<th>Departure Time</th>";
     echo "<th>Airline</th>";
     echo "<th>Action</th>";
-    
     echo "</tr>";
 
     echo "</tr>";
-    
+
     while ($flightdata = $flightdata_query->fetch_assoc()) {
-
         echo "<tr>";
-
         echo "<td>" . $count. "</td>";
         echo "<td>" . $flightdata["flight_id"] . "</td>";
         echo "<td>" . $flightdata["origin"] . "</td>";
@@ -128,22 +114,12 @@ else{
         echo "<td>" . $flightdata["departure_time"] . "</td>";
         echo "<td>" . $flightdata["airline_name"] . "</td>";
         echo "<td><button id='admin_buttons' onclick='location.href=\"admin_modify_flight.php?flight_id=" . $flightdata["flight_id"] . "\"'>Modify</button></td>";
-        
         echo "</tr>";
-
         $count++;
-    
     }
     
     echo "</table>";
-    
-    
-    echo"</div>";
-
-      
+    echo "</div>";
     ?>
-
-
-
 </body>
 </html>
