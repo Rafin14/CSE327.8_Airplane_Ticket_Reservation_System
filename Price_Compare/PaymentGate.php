@@ -12,19 +12,32 @@
 <body>
     <!-- Header with a centered heading -->
     <div class="centered-heading">
+        <!-- Heading welcoming users to the payment section -->
         <h1>Welcome to Payment</h1>
     </div>
-
+    <!-- Container for payment details -->
     <div class="centered-box">
         <?php
-        $db = mysqli_connect("localhost", "root", "", "airplane_ticket_reservation_system");
+        /**
+ 
+ *
+ * PHP version 7.2
+ *
+ * @category Payment_Process
+ * @package  Airplane_Ticket_Reservation_System
+ * @author   Zarin Tasnim Roshni 2021627642
+ */
+       // Establish a database connection
+       $db = mysqli_connect("localhost", "root", "", "airplane_ticket_reservation_system");
 
-        $query = "SELECT * FROM payment_info WHERE booking_id = '555';";
-        $payment_data_query = $db->query($query);
+       function displayPaymentDetails($db)
+{
+   $query = "SELECT * FROM payment_info WHERE booking_id = '555';";
+   $payment_data_query = $db->query($query);
 
-        if (!$payment_data_query) {
-            die("Query failed: " . $db->error);
-        }
+   if (!$payment_data_query) {
+       die("Query failed: " . $db->error);
+   }
 
         echo "<div class='payment-details'>";
 
@@ -62,6 +75,9 @@
         }
         echo "</table>"; // End table
         echo "</div>";
+    }
+     // Display payment details
+displayPaymentDetails($db);
         ?>
     </div>
 

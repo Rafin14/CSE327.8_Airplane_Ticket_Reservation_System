@@ -14,16 +14,33 @@
       <div class="box box2">
       <h2>Cheapest</h2>
         <?php
+   /**
+ 
+ 
+ * PHP version 7.2
+ *
+ * @category Ticket_Price_Comparison
+ * @package  Airplane_Ticket_Reservation_System
+ * @author   Zarin Tasnim Roshni 2021627642
+ */
 
+     // Establish a database connection
         
         $db= mysqli_connect("localhost", "root", "","airplane_ticket_reservation_system");
         
-        $query= "SELECT * FROM flight_info WHERE price = (SELECT MIN(price) FROM flight_info);";
-        $cheapest_data_query = $db->query($query);
+        /**
+ * Fetches and displays the details of the cheapest flight.
+ *
+ * @param mysqli $db The database connection
+ */
+function displayCheapestFlightDetails($db)
+{
+    $query = "SELECT * FROM flight_info WHERE price = (SELECT MIN(price) FROM flight_info);";
+    $cheapest_data_query = $db->query($query);
 
-        if(!$cheapest_data_query){
-            die ("Query failed:" .$db->error);
-        }
+    if (!$cheapest_data_query) {
+        die("Query failed: " . $db->error);
+    }
         echo "<div class= 'flight_details' >";
 
         echo "<table>"; //Start table
@@ -67,6 +84,10 @@
 
         echo "</table>";
         echo "</div>";
+    }
+    // Display details for the cheapest flight
+    displayCheapestFlightDetails($db);
+    
 
        ?>
 
@@ -75,7 +96,14 @@
 <div class="box box3">
     <h2>Best Value</h2>
     <?php
+     /**
+ * Fetches and displays the details of flights that are not the cheapest or most expensive (best value).
+ *
+ * @param mysqli $db The database connection
+ */
     $db= mysqli_connect("localhost", "root", "","airplane_ticket_reservation_system");
+    function displayBestValueFlightDetails($db)
+{
     $best_value_query = "SELECT * FROM flight_info WHERE price NOT IN (SELECT MIN(price) FROM flight_info) AND price NOT IN (SELECT MAX(price) FROM flight_info);";
     $best_value_result = $db->query($best_value_query);
 
@@ -109,12 +137,23 @@
 
     echo "</table>";
     echo "</div>";
+}
+
+// Display details for the best value flights
+displayBestValueFlightDetails($db);
     ?>
 </div>
 
 <div class="box box4">
 <h2>Fastest</h2>
     <?php
+    /**
+ * Fetches and displays the details of the most expensive (fastest) flight.
+ *
+ * @param mysqli $db The database connection
+ */
+function displayFastestFlightDetails($db)
+{
     $fastest_query = "SELECT * FROM flight_info WHERE price = (SELECT MAX(price) FROM flight_info);";
     $fastest_result = $db->query($fastest_query);
 
@@ -148,6 +187,10 @@
 
     echo "</table>";
     echo "</div>";
+
+}
+// Display details for the most expensive (fastest) flight
+displayFastestFlightDetails($db);
     ?>
 </div>
 
