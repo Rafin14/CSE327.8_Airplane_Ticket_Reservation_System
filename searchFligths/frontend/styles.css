@@ -1,0 +1,48 @@
+/* Styles for .search-form-container */
+.search-form-container {
+  width: 80%;
+  max-width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #89cff0;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.h1 {
+  font-size: 24px;
+  margin-bottom: 20px; /* Add space between the title and the form */
+  text-align: center;
+}
+
+/* Styles for .origin-input, .destination-input, .departure-date-input, .return-date-input,
+   .adult-seats-input, .child-seats-input, .class-select, .round-trip-label, .round-trip-checkbox */
+.origin-input,
+.destination-input,
+.departure-date-input,
+.return-date-input,
+.adult-seats-input,
+.child-seats-input,
+.class-select,
+.round-trip-label,
+.round-trip-checkbox {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 30px; /* Makes the inputs look like cylinders */
+  background-color: #eeeeee;
+  margin: 5px;
+}
+
+/* Styles for .search-button */
+.search-button {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 30px; /* Makes the button look like a cylinder */
+  font-size: 16px;
+  color: #000000;
+  margin-top: 10px;
+}
