@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Traveler Dashboard</title>
+    <style>
+      body {
+        font-family: sans-serif;
+      }
+
+      .dashboard {
+        width: 700px;
+        margin: 0 auto;
+        border: 1px solid black;
+        padding: 20px;
+      }
+
+      .dashboard-header {
+        text-align: center;
+        font-size: 24px;
+      }
+
+      .dashboard-body {
+        margin-top: 20px;
+      }
+
+      .dashboard-body-section {
+        margin-bottom: 20px;
+      }
+
+      .dashboard-body-section-header {
+        font-size: 18px;
+        font-weight: bold;
+      }
+
+      .dashboard-body-section-table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      .dashboard-body-section-table thead th {
+        background-color: #ccc;
+        padding: 5px;
+      }
+
+      .dashboard-body-section-table tbody td {
+        padding: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="dashboard">
+      <div class="dashboard-header">Traveler Dashboard</div>
+
+      <div class="dashboard-body">
+        <div class="dashboard-body-section">
+          <div class="dashboard-body-section-header">Upcoming Flights</div>
+
+          <table class="dashboard-body-section-table">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Departure</th>
+                <th>Destination</th>
+                <th>Flight Number</th>
+                <th>Airline</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>2023-10-30</td>
+                <td>11:15AM</td>
+                <td>Barlin</td>
+                <td>SAN FRANSISCO</td>
+                <td>BA123</td>
+                <td>British Airways</td>
+              </tr>
+
+              <tr>
+                <td>2023-11-05</td>
+                <td>10:30AM</td>
+                <td>SAN FRANSISCO</td>
+                <td>London</td>
+                <td>BA456</td>
+                <td>British Airways</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
