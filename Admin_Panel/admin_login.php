@@ -19,6 +19,7 @@ $id = $_POST["id"];
 $pass = $_POST["password"];
 
 // Check if either ID or password is empty
+// Make this a function
 if (empty($id) || empty($pass)) {
     echo "error";
     echo '<script>alert("Please Enter ID and Pass")</script>';
